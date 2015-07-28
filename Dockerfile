@@ -1,6 +1,6 @@
 FROM frvi/ruby
 
-MAINTAINER Sebastian Caceres <scaceres@octo.com>
+MAINTAINER scaceres@octo.com
 
 RUN gem install bundle dashing
 RUN mkdir /dashing && \
@@ -23,5 +23,10 @@ VOLUME ["/dashboards", "/jobs", "/config", "/public", "/widgets", "/assets"]
 ENV PORT 3030
 EXPOSE $PORT
 WORKDIR /dashing
+
+RUN echo "\ngem 'oa-openid'" >> Gemfile && \
+    echo "\ngem 'omniauth-google-oauth2'" >> Gemfile && \
+    echo "\ngem 'ruby-trello'" >> Gemfile && \
+    bundle install
 
 CMD ["/run.sh"]
