@@ -11,6 +11,7 @@ RUN mkdir /dashing && \
     ln -s /dashing/public /public && \
     ln -s /dashing/widgets /widgets && \
     ln -s /dashing/assets /assets && \
+    ln -s /dashing/lib /lib_dashing && \
     mkdir /dashing/config && \
     mv /dashing/config.ru /dashing/config/config.ru && \
     ln -s /dashing/config/config.ru /dashing/config.ru && \
@@ -18,7 +19,7 @@ RUN mkdir /dashing && \
 
 COPY run.sh /
 
-VOLUME ["/dashboards", "/jobs", "/config", "/public", "/widgets", "/assets"]
+VOLUME ["/dashboards", "/jobs", "/config", "/public", "/widgets", "/assets", "/lib_dashing"]
 
 ENV PORT 3030
 EXPOSE $PORT
