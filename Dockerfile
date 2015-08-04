@@ -25,9 +25,7 @@ ENV PORT 3030
 EXPOSE $PORT
 WORKDIR /dashing
 
-RUN echo "\ngem 'oa-openid'" >> Gemfile && \
-    echo "\ngem 'omniauth-google-oauth2'" >> Gemfile && \
-    echo "\ngem 'ruby-trello'" >> Gemfile && \
-    bundle install
+COPY Gemfile /dashing/Gemfile
+RUN bundle install
 
 CMD ["/run.sh"]
